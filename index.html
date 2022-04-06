@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://kit.fontawesome.com/4552defb60.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./assets/font/themify-icons/themify-icons.css">
+</head>
+
+<body>
+    <div id="main">
+        <div id="header">
+            <!-- Begin:NAV -->
+            <ul id="nav">
+                <li><a href="#sliders">Home</a></li>
+                <li><a href="#band">Band</a></li>
+                <li><a href="#tour">Tour</a></li>
+                <li><a href="#contact">Contact</a>
+                <li>
+                    <a href="">
+                        More
+                        <i class="down ti-angle-down"></i>
+                    </a>
+                    <ul class="sub-Nav">
+                        <li><a href="">Merchandise</a></li>
+                        <li><a href="">Extras</a></li>
+                        <li><a href="">Media</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- End:NAV -->
+            <div class="search-btn">
+                <i class="ti-search"></i>
+            </div>
+        </div>
+        <div id="sliders">
+            <div class="cover"></div>
+            <div class="text-content">
+                <h2 class="text-heading">Queen Band</h2>
+                <p class="text-descriptio">Queen are a British rock band formed in London in 1970.</p>
+                <div class="currentslide">
+                    <i class="ti-control-record" onclick="slideShow(0)"></i>
+                    <i class="ti-control-record" onclick="slideShow(1)"></i>
+                    <i class="ti-control-record" onclick="slideShow(2)"></i>
+                    <i class="ti-control-record" onclick="slideShow(3)"></i>
+                    <i class="ti-control-record" onclick="slideShow(4)"></i>
+                    <i class="ti-control-record" onclick="slideShow(5)"></i>
+                    <i class="ti-control-record" onclick="slideShow(6)"></i>
+                </div>
+            </div>
+            <a class="ti-angle-left prev" onclick="pluss(-1)"></a>
+            <a class="ti-angle-right next" onclick="pluss(1)"></a>
+        </div>
+        <div id="container">
+            <!-- About section -->
+            <div id="band" class="content">
+                <div class="content-heading">
+                    Queen
+                </div>
+                <div class="content-sub-heading">
+                    We Will Rock You
+                </div>
+                <p id="about">
+                    Their classic line-up was Freddie Mercury (lead vocals, piano), Brian May (guitar, vocals), Roger
+                    Taylor (drums, vocals) and John Deacon (bass). Their earliest works were influenced by progressive
+                    rock, hard rock and heavy metal, but the band gradually ventured into more conventional and
+                    radio-friendly works by incorporating further styles, such as arena rock and pop rock.
+                </p>
+                <div class="content-member">
+                    <div class="member">
+                        <div class="member-name">
+                            Roger Taylor
+                        </div>
+                        <div class="member-avatar">
+                            <img src="./assets/img/band_member/rogerTaylor.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="member">
+                        <div class="member-name">
+                            John Deacon
+                        </div>
+                        <div class="member-avatar">
+                            <img src="./assets/img/band_member/johnDeacon.png" alt="">
+                        </div>
+                    </div>
+                    <div class="member">
+                        <div class="member-name">
+                            Freddie Mercury
+                        </div>
+                        <div class="member-avatar">
+                            <img src="./assets/img/band_member/mercury.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="member">
+                        <div class="member-name">
+                            Brian May
+                        </div>
+                        <div class="member-avatar">
+                            <img src="./assets/img/band_member/brianMay.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Tour -->
+            <div id="tour" class="content-tour">
+                <div class="tour">
+                    <div class="content-heading white">
+                        TOUR DATES
+                    </div>
+                    <div class="content-sub-heading white">
+                        Remember to book your tickets!
+                    </div>
+                    <ul class="tickets-list">
+                        <li>September <span class="soldout-tickets">Sold out</span></li>
+                        <hr>
+                        <li>Octember <span class="soldout-tickets">Sold out</span></li>
+                        <hr>
+                        <li>November <span class="tickets">3</span></li>
+                    </ul>
+                    <ul class="img-tour">
+                        <li>
+                            <div class="cover-img">
+                                <img src="./assets/img/location-tour/newyork.jfif" alt="newyork">
+                            </div>
+                            <div class="infor-tour">
+                                <p><b>New York</b></p>
+                                <p class="tour-date">Fri 27 Nov 2016</p>
+                                <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+                                <button>Buy Tickets</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="cover-img">
+                                <img src="./assets/img/location-tour/paris.jfif" alt="paris">
+                            </div>
+                            <div class="infor-tour">
+                                <p><b>Paris</b></p>
+                                <p class="tour-date">Sat 28 Nov 2016</p>
+                                <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+                                <button>Buy Tickets</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="cover-img">
+                                <img src="./assets/img/location-tour/sanfrancisco.jfif" alt="san francisco">
+                            </div>
+                            <div class="infor-tour">
+                                <p><b>San Francisco</b></p>
+                                <p class="tour-date">Fri 29 Nov 2016</p>
+                                <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+                                <button>Buy Tickets</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="contact" class="content">
+                <div class="content-heading">
+                    CONTACT
+                </div>
+                <div class="content-sub-heading">
+                    Fan? Drop a note!
+                </div>
+                <div class="fan">
+                    <div class="contact-infor">
+                        <div class="location">
+                            <i class="ti-location-pin">
+                            </i> <span>London, England</span>
+                        </div>
+                        <div class="phone">
+                            <i class="ti-mobile">
+                            </i><span>+0840985950723</span>
+                        </div>
+                        <div class="mail">
+                            <i class="ti-email">
+                            </i><span>jackandy249@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="contact-faninfor">
+                        <form action="/actionpage.php" target="_blank">
+                            <div class="fill">
+                                <input type="text" name="Name" required id="name" placeholder="Name">
+                                <input type="text" name="Email" required id="email" placeholder="Email">
+                            </div>
+                            <input class="message" type="text" name="Message" required id="message"
+                                placeholder="Message">
+                            <br>
+                            <button class="faninfor-submit" type="submit">Send</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="img-container">
+
+            </div>
+        </div>
+        <div id="footer">
+            <div class="footer-icons">
+                <a target="_blank" title="Liên hệ" href="https://www.facebook.com/Jayzneverzz"> <i
+                        class="fa fa-facebook-official"></i></a>
+                <a target="_blank" title="Liên hệ" href="https://www.facebook.com/Jayzneverzz"> <i
+                        class="fa fa-instagram"></i></a>
+                <a target="_blank" title="Liên hệ" href="https://www.facebook.com/Jayzneverzz"> <i
+                        class="fa fa-snapchat"></i></a>
+                <a target="_blank" title="Liên hệ" href="https://www.facebook.com/Jayzneverzz"> <i
+                        class="fa fa-pinterest-p"></i></a>
+                <a target="_blank" title="Liên hệ" href="https://www.facebook.com/Jayzneverzz"> <i
+                        class="fa fa-twitter"></i></a>
+                <a target="_blank" title="Liên hệ" href="https://www.facebook.com/Jayzneverzz"> <i
+                        class="fa fa-linkedin"></i></a>
+            </div>
+            <p class="small-font">Powered by <a href="https://www.facebook.com/Jayzneverzz" target="_blank">Tran Phu
+                    Dat</a></p>
+        </div>
+</body>
+
+</html>
+<script src="./assets/js/script.js"></script>
