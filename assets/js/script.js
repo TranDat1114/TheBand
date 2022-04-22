@@ -16,7 +16,7 @@ function pluss(next) {
 
 function slideShow(value) {
     index = value;
-    document.getElementById('sliders').style.background = `url(/assets/img/banner/banner_${index}.webp) lightblue top center / cover no-repeat`;
+    document.getElementById('sliders').style.background = `url('assets/img/banner/banner_${index}.webp') lightblue top center / cover no-repeat`;
     let dots = document.getElementsByClassName("ti-control-record");
     for (i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace("active", "");
