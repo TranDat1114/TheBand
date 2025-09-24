@@ -12,6 +12,23 @@
     box-sizing: border-box;
 }
 
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Scroll padding to account for fixed header */
+html {
+    scroll-padding-top: calc(var(--height-Nav) - 25px);
+}
+
+/* Ensure sections are properly positioned for anchor links */
+#band,
+#tour,
+#contact {
+    scroll-margin-top: calc(var(--height-Nav) - 25px);
+}
+
 .white {
     color: #fff !important;
 }
@@ -19,6 +36,13 @@
 body {
     line-height: 1.5;
     font-family: "Lato", sans-serif;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Make images responsive */
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 #header {
@@ -110,12 +134,50 @@ body {
 #sliders {
     position: relative;
     margin-top: var(--height-Nav);
-    padding-top: 50%;
-    padding-bottom: 10px;
-    background: url('../img/banner/banner_0.webp') #333 top center / cover no-repeat;
+    width: 100%;
+    background: url('../img/banner/banner_0.webp') #333 center center / cover no-repeat;
     opacity: 1;
     filter: grayscale(100%);
     transition: all .5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Fallback for browsers that don't support aspect-ratio */
+    height: 100vh;
+    min-height: 500px;
+    
+    /* Responsive aspect ratio based on screen size */
+    aspect-ratio: 21/9; /* Ultra-wide for desktop */
+    min-height: 100vh; /* Still ensure full viewport height */
+    max-height: 100vh; /* Don't exceed viewport height */
+}
+
+/* Modern browsers with aspect-ratio support */
+@supports (aspect-ratio: 1) {
+    #sliders {
+        height: auto; /* Let aspect-ratio control height */
+    }
+}
+
+/* Adjust aspect ratio for different screen sizes */
+@media (max-width: 1200px) {
+    #sliders {
+        aspect-ratio: 16/9; /* Standard widescreen */
+    }
+}
+
+@media (max-width: 768px) {
+    #sliders {
+        aspect-ratio: 4/3; /* More square for tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    #sliders {
+        aspect-ratio: 3/4; /* Tall for mobile portrait */
+        min-height: 100vh;
+    }
 }
 
 #sliders:hover {
@@ -135,11 +197,12 @@ body {
 
 #sliders .text-content {
     position: absolute;
-    bottom: 50px;
+    bottom: 80px;
     width: 100%;
     text-align: center;
     color: #fff;
     font-family: 'Fira Sans', sans-serif;
+    z-index: 1;
     /* mix-blend-mode: difference; */
 }
 
@@ -171,6 +234,8 @@ body {
     padding: 15px 5px;
     opacity: 0.7;
     transition: all .5s linear;
+    top: 50%;
+    transform: translateY(-50%); /* Center vertically */
 }
 
 .prev:hover,
@@ -179,19 +244,21 @@ body {
 }
 
 .prev {
-    top: 50%;
-    left: 0
+    left: 0;
 }
 
 .next {
-    top: 50%;
     right: 0;
 }
 
 #container .content {
     width: var(--width-content);
-    padding: 54px 0;
+    padding: 80px 0;
     margin: 0 auto;
+    min-height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #container .content-heading,
@@ -243,8 +310,11 @@ body {
 
 #container .content-tour {
     background: #000;
-    padding: 54px 0;
-    height: 670px;
+    padding: 80px 0;
+    min-height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .content-tour ul,
@@ -267,6 +337,17 @@ li {
 
 .tickets-list li {
     margin: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 0;
+}
+
+.tickets-list hr {
+    margin: 0 20px;
+    border: 0;
+    border-top: 1px solid #ddd;
+    opacity: 0.5;
 }
 
 .soldout-tickets {
@@ -357,11 +438,16 @@ li {
     color: #fff;
     padding: 8px 16px;
     background-color: #000;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .tour .img-tour button:hover {
     color: #000;
     background-color: #ccc;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .img-tour .tour-date {
@@ -392,6 +478,9 @@ li {
     padding: 8px;
     overflow: visible;
     margin: 5px 0;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .contact-faninfor .faninfor-submit {
@@ -401,6 +490,12 @@ li {
 
 .contact-faninfor .fill {
     width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.contact-faninfor .fill input {
+    flex: 1;
 }
 
 .message {
@@ -426,11 +521,14 @@ li {
 
 #container .img-container {
     position: relative;
-    margin-top: var(--height-Nav);
-    padding-top: 50%;
-    background: url('../img/containner-img.jpg') top center / cover no-repeat;
+    height: 100vh; /* Full viewport height */
+    min-height: 400px; /* Minimum height for small screens */
+    background: url('../img/containner-img.jpg') center center / cover no-repeat;
     filter: grayscale(100%);
     transition: all .3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #container .img-container:hover {
@@ -490,3 +588,491 @@ li {
     z-index: 3;
     background:rgb(0, 0, 0, 0.3)
 } */
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Mobile Menu Toggle Button */
+#header .mobile-menu-btn {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    line-height: var(--height-Nav);
+    padding: 0 21px;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#header .mobile-menu-btn:hover {
+    background-color: #ccc;
+    color: #000;
+}
+
+/* Tablet styles */
+@media only screen and (max-width: 1023px) {
+    :root {
+        --width-content: 80vw;
+    }
+    
+    #container .member {
+        width: 48%;
+        margin-bottom: 30px;
+    }
+    
+    #container .content-member {
+        flex-wrap: wrap;
+    }
+    
+    .tour .img-tour {
+        flex-direction: column;
+        margin-top: 15px;
+    }
+    
+    .tour .img-tour li {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .img-tour li:first-child,
+    .img-tour li:last-child,
+    .img-tour li:first-child img,
+    .img-tour li:last-child img {
+        border-radius: var(--radius);
+    }
+    
+    .fan {
+        flex-direction: column;
+    }
+    
+    .contact-faninfor {
+        margin-top: 30px;
+    }
+    
+    #container .content-tour {
+        padding: 60px 20px;
+    }
+    
+    /* Adjust section heights for tablet */
+    #container .content,
+    #container .content-tour {
+        min-height: 90vh;
+    }
+}
+
+/* Mobile styles */
+@media only screen and (max-width: 739px) {
+    :root {
+        --width-content: 95vw;
+    }
+    
+    /* Adjust scroll offset for mobile */
+    html {
+        scroll-padding-top: calc(var(--height-Nav) - 20px);
+    }
+    
+    #band,
+    #tour,
+    #contact {
+        scroll-margin-top: calc(var(--height-Nav) - 20px);
+    }
+    
+    /* Mobile Navigation */
+    #header .mobile-menu-btn {
+        display: block;
+    }
+    
+    #header .search-btn {
+        display: none;
+    }
+    
+    #nav {
+        display: none;
+        position: fixed;
+        top: var(--height-Nav);
+        left: 0;
+        right: 0;
+        background: #333;
+        flex-direction: column;
+        z-index: 3;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    }
+    
+    #nav.open {
+        display: flex;
+    }
+    
+    #nav li {
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid #555;
+    }
+    
+    #nav li a {
+        padding: 12px 24px;
+        color: #fff;
+    }
+    
+    #nav .sub-Nav {
+        position: static;
+        display: block;
+        box-shadow: none;
+        background: #444;
+    }
+    
+    #nav .sub-Nav a {
+        padding-left: 40px;
+    }
+    
+    /* Slider adjustments */
+    #sliders .text-content {
+        padding: 0 15px;
+        bottom: 30px;
+    }
+    
+    #sliders .text-heading {
+        font-size: 24px;
+    }
+    
+    #sliders .text-descriptio {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    
+    .currentslide .ti-control-record {
+        margin: 0 3px;
+        padding: 5px;
+        font-size: 12px;
+    }
+    
+    .prev, .next {
+        font-size: 18px;
+        padding: 10px 3px;
+    }
+    
+    /* Content adjustments */
+    #container .content {
+        padding: 40px 15px;
+        min-height: 100vh;
+    }
+    
+    #container .content-tour {
+        padding: 40px 15px;
+        min-height: 100vh;
+    }
+    
+    #sliders {
+        min-height: 100vh;
+        aspect-ratio: 4/3; /* Override for mobile */
+    }
+    
+    #sliders .text-content {
+        bottom: 60px;
+        padding: 0 15px;
+    }
+    
+    #container .content-heading {
+        font-size: 24px;
+    }
+    
+    #container .content-sub-heading {
+        font-size: 13px;
+    }
+    
+    #container #about {
+        font-size: 14px;
+    }
+    
+    /* Members section */
+    #container .member {
+        width: 100%;
+        margin-bottom: 32px;
+    }
+    
+    #container .member-avatar img {
+        height: 220px;
+    }
+    
+    /* Tour section */
+    #container .content-tour {
+        padding: 40px 15px;
+        min-height: 100vh;
+    }
+    
+    .content-tour .tour {
+        width: 100%;
+    }
+    
+    /* Improve tickets list for mobile */
+    #container .tickets-list {
+        font-size: 13px;
+        padding: 8px 0;
+        margin-bottom: 20px;
+    }
+    
+    .tickets-list li {
+        margin: 8px 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4px 0;
+    }
+    
+    .soldout-tickets,
+    .tickets {
+        flex-shrink: 0;
+        font-size: 11px;
+    }
+    
+    .soldout-tickets {
+        padding: 3px 8px;
+    }
+    
+    .tickets {
+        width: 18px;
+        height: 18px;
+        line-height: 18px;
+        font-size: 10px;
+        margin-right: 0;
+    }
+    
+    /* Improve tour cards for mobile */
+    .tour .img-tour {
+        gap: 15px;
+        padding: 10px;
+    }
+    
+    .tour .img-tour li {
+        border-radius: var(--radius) !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+    
+    .tour .img-tour img {
+        height: 120px;
+    }
+    
+    .img-tour .infor-tour {
+        margin: 12px;
+    }
+    
+    .infor-tour p {
+        margin: 8px 0;
+        font-size: 13px;
+        line-height: 1.4;
+    }
+    
+    .infor-tour p:first-child {
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+    
+    .infor-tour .tour-date {
+        color: #666;
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+    
+    .tour .img-tour button {
+        padding: 8px 16px;
+        font-size: 12px;
+        margin-bottom: 12px;
+        border-radius: 4px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .tour .img-tour button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    /* Contact section */
+    .contact-infor .location,
+    .contact-infor .phone,
+    .contact-infor .mail {
+        font-size: 13px;
+    }
+    
+    .contact-faninfor input,
+    .message {
+        font-size: 16px; /* Prevent zoom on iOS */
+        width: 100%;
+    }
+    
+    .contact-faninfor .fill {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .contact-faninfor .fill input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    /* Footer adjustments */
+    #footer {
+        padding: 32px 15px;
+    }
+    
+    #footer .footer-icons {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    #footer .footer-icons i {
+        margin: 0 5px;
+        font-size: 20px;
+    }
+    
+    .small-font {
+        font-size: 12px;
+        padding: 0 15px;
+    }
+}
+
+/* Very small mobile devices */
+@media only screen and (max-width: 479px) {
+    :root {
+        --height-Nav: 42px;
+    }
+    
+    /* Adjust scroll offset for smaller header */
+    html {
+        scroll-padding-top: calc(var(--height-Nav) - 25px);
+    }
+    
+    #band,
+    #tour,
+    #contact {
+        scroll-margin-top: calc(var(--height-Nav) - 25px);
+    }
+    
+    #sliders {
+        min-height: 100vh;
+        aspect-ratio: 3/4; /* Tall portrait for very small mobile */
+    }
+    
+    #sliders .text-heading {
+        font-size: 20px;
+    }
+    
+    #sliders .text-descriptio {
+        font-size: 12px;
+    }
+    
+    #sliders .text-content {
+        bottom: 40px;
+    }
+    
+    #container .content {
+        min-height: 100vh;
+        padding: 30px 15px;
+    }
+    
+    #container .content-tour {
+        min-height: 100vh;
+        padding: 30px 15px;
+    }
+    
+    #container .content-heading {
+        font-size: 20px;
+    }
+    
+    #container .member-avatar img {
+        height: 180px;
+    }
+    
+    .tickets-list li {
+        margin: 6px 10px;
+        font-size: 12px;
+    }
+    
+    /* Improve very small mobile tour cards */
+    .tour .img-tour {
+        gap: 12px;
+        padding: 8px;
+    }
+    
+    .tour .img-tour img {
+        height: 100px;
+    }
+    
+    .img-tour .infor-tour {
+        margin: 8px;
+    }
+    
+    .infor-tour p {
+        font-size: 12px;
+        margin: 6px 0;
+    }
+    
+    .infor-tour p:first-child {
+        font-size: 13px;
+    }
+    
+    .infor-tour .tour-date {
+        font-size: 11px;
+    }
+    
+    .tour .img-tour button {
+        padding: 6px 12px;
+        font-size: 11px;
+        margin-bottom: 8px;
+    }
+    
+    #footer .footer-icons i {
+        font-size: 18px;
+        width: 26px;
+        height: 26px;
+    }
+    
+    /* Ensure img-container is still visible on very small screens */
+    #container .img-container {
+        min-height: 50vh;
+    }
+}
+
+/* Landscape orientation adjustments */
+@media only screen and (max-height: 500px) and (orientation: landscape) {
+    #sliders {
+        min-height: 100vh;
+        aspect-ratio: 21/9; /* Ultra-wide for landscape */
+        max-height: none; /* Allow natural aspect ratio height */
+    }
+    
+    #sliders .text-content {
+        bottom: 20px;
+    }
+    
+    #sliders .text-heading {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+    
+    #sliders .text-descriptio {
+        font-size: 11px;
+        margin-bottom: 10px;
+    }
+    
+    .currentslide .ti-control-record {
+        padding: 3px;
+        font-size: 10px;
+    }
+    
+    #container .content,
+    #container .content-tour {
+        min-height: 100vh;
+        padding: 20px 15px;
+    }
+    
+    #container .content-heading {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    #container .content-sub-heading {
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+}
